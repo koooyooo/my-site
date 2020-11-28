@@ -1,4 +1,6 @@
 baseURL: https://hugo-toha.github.io
+# https://toha-guides.netlify.app/posts/
+# https://github.com/hugo-toha/toha
 
 languageCode: en-us
 title: "Koyo's Blog"
