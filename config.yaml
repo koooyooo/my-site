@@ -1,4 +1,7 @@
-baseURL: https://koooyooo.github.io/my-site
+# baseURL: http://localhost
+baseURL: https://www.dm-on.info/
+# baseURL: http://localhost:1313
+# baseURL: https://koooyooo.github.io/my-site
 # https://toha-guides.netlify.app/posts/
 # https://github.com/hugo-toha/toha
 
@@ -38,3 +41,11 @@ params:
   # Currently, you can just hide it from the footer.
   newsletter:
     enable: true
+
+deployment:
+  targets:
+    name: "gcs-deployment"
+    URL: "gs://www.dm-on.info"
+
+# gsutil web set -m index.html -e 404.html gs://${bucket-name}
+# https://cloud.google.com/storage/docs/static-website
