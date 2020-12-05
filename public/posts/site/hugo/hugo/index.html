@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>Categories</title>
+    <title>Hugo</title>
     <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 <meta http-equiv="X-UA-Compatible" content="ie=edge" />
@@ -23,18 +23,22 @@
 <link rel="stylesheet" href="/assets/css/style.css"/>
 
     
-    
-    <script async src="https://www.googletagmanager.com/gtag/js?id=G-CS5QEMMHQY"></script>
-    <script>
-      window.dataLayer = window.dataLayer || [];
-      function gtag(){dataLayer.push(arguments);}
-      gtag('js', new Date());
-    
-      gtag('config', 'G-CS5QEMMHQY');
-    </script>
-    
-    <link rel="stylesheet" href="/assets/css/layouts/list.css">
-    <link rel="stylesheet" href="/assets/css/navigators/sidebar.css">
+
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-CS5QEMMHQY"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-CS5QEMMHQY');
+</script>
+<meta name="description" content="Hugo" />
+<link
+  rel="stylesheet"
+  href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.18.1/styles/atom-one-dark.min.css"
+/>
+<link rel="stylesheet" href="/assets/css/layouts/single.css"/>
+<link rel="stylesheet" href="/assets/css/navigators/sidebar.css">
 
 
     
@@ -76,9 +80,6 @@
 
       
       
-  
-  
-
   <section class="sidebar-section" id="sidebar-section">
     <div class="sidebar-holder">
       <div class="sidebar" id="sidebar">
@@ -175,22 +176,108 @@
       
       
 <section class="content-section" id="content-section">
-  <div class="content container-fluid" id="content">
-    <div class="container-fluid post-card-holder" id="post-card-holder">
+  <div class="content">
+    <div class="container p-0 read-area">
       
+      <div class="hero-area col-sm-12" id="hero-area" style='background-image: url(https://www.dm-on.info/assets/images/default-hero.jpg);'>
+      </div>
+
       
-    </div>
-    <div class="paginator">
-      
+      <div class="page-content">
+        <div class="author-profile ml-auto align-self-lg-center">
+          <img class="rounded-circle" src='/images/author/john.png'/>
+          <h5 class="author-name">Koyo Onda</h5>
+          <p>November 28, 2020</p>
+        </div>
+
+        <div class="title">
+          <h1>Hugo</h1>
+        </div>
+
+        <div class="post-content" id="post-content">
+          <h2 id="intro">Intro</h2>
+<p><a href="https://gohugo.io/">Hugo</a>でサイトを作成してみました。実際に作ってみるととても軽量なサイトになっているので驚きです。元々はWordPressでサイトを作成しようと考えていたのですが、<a href="https://ja.wordpress.com/">WordPress</a>の場合コンテンツの管理にMySQLを利用するため、維持費の面で年に1万円前後かかってしまうというのがネックでした。</p>
+<p>また、<a href="https://hatenablog.com/guide/pro">はてなブログPro</a>等も検討し、こちらのほうがトータルでは安価で手軽なのですが、やはり自由度の面で一定の制限が掛かってしまいます (大抵の人には十分な自由度とは思いますが)</p>
+<p>基本的には静的コンテンツを配信するだけなので、特段リッチな基盤は必要ありません。Webサーバ上にHTMLを置くだけでも良いわけです。特に、昨今は<a href="https://httpd.apache.org/">Apache</a>,<a href="https://nginx.org/en/">Nginx</a>ベースの<a href="https://ja.wikipedia.org/wiki/Web%E3%82%B5%E3%83%BC%E3%83%90">Webサーバ</a>を立てないでも配信する手段があります。<a href="https://docs.github.com/ja/free-pro-team@latest/github/working-with-github-pages/about-github-pages">GitHubPages</a>を利用しても良いですし、<a href="https://aws.amazon.com/jp/s3/">Amazon S3</a> や <a href="https://cloud.google.com/storage/?hl=ja">Google Cloud Storage</a>といった Cloud上のストレージサービスに配信機能がありますので、その中にコンテンツを配備し設定を公開とするだけで安価に配信可能な訳です。</p>
+<h2 id="hugo">Hugo</h2>
+<p><a href="https://gohugo.io/">Hugo</a>自体は、静的サイトジェネレーターと呼ばれるものです。静的サイトジェネレータの有名どころは <a href="https://jamstack.org/generators/">Site Generators</a> で確認できますが、Hugoは <a href="https://golang.org/">Golang</a>でこれを実現したものとなります。多くの静的サイトジェネレータが<a href="https://developer.mozilla.org/ja/docs/Web/JavaScript">JavaScript</a>を採用していますが、Golang製であるHugoは高速な処理に定評があります。</p>
+<h3 id="markdown">Markdown</h3>
+<p>Hugoではコンテンツ(文章)を<a href="https://ja.wikipedia.org/wiki/Markdown">Markdown</a>として記述します。 平易な記法でリッチなコンテンツを表現できるため、最近では多くのBlogサービスもMarkdown記法に対応してきていますが、Hugoを始めとした静的サイトジェネレータはMarkdownを主たる記法としてコンテンツを生成しています。</p>
+<h3 id="static-site-generator">Static Site Generator</h3>
+<p>静的サイトジェネレータは「サイトは更新される回数より閲覧される回数の方が多いのだから、閲覧の度に動的なサイト生成する従来のツールは非効率だ、その代わりに更新時にサイトを生成して閲覧時には同じものを提示しよう」という発想によるものです。確かに閲覧時の処理負荷はかなり低い様で、各ページを高速に閲覧することができます。逆に、何らかの計算処理が必要な動的なページを生成しようと思ったら、静的サイトジェネレータには荷が重いということになります。</p>
+
+        </div>
+
+        
+        
+          <div class="btn-improve-page">
+              <a href="https://github.com/koooyooo/my-site/edit/master/content/posts/site/hugo/hugo.md">
+                <i class="fas fa-code-branch"></i>
+                Improve this page
+              </a>
+          </div>
+        
+
+        
+      <hr />
+        <div class="row next-prev-navigator">
 
 
+  
+    
+      
+      <div class="col-md-6 previous-article">
+        <a href="/posts/site/hugo/hugo-gcs/" class="btn btn-outline-info">
+          <span><i class="fas fa-chevron-circle-left"></i> Prev</span>
+          <br />
+          <span>Hugo Gcs</span>
+        </a>
+      </div>
+      
+    
+    
+  
+
+  
+
+  
+
+</div>
+
+      <hr />
+      
+      
+      </div>
     </div>
   </div>
+  
 </section>
 
 
       
-       
+      
+  <section class="toc-section" id="toc-section">
+    
+    <div class="toc-holder">
+      <h5 class="text-center pl-3">Table of Contents</h5>
+      <hr>
+      <div class="toc">
+        <nav id="TableOfContents">
+  <ul>
+    <li><a href="#intro">Intro</a></li>
+    <li><a href="#hugo">Hugo</a>
+      <ul>
+        <li><a href="#markdown">Markdown</a></li>
+        <li><a href="#static-site-generator">Static Site Generator</a></li>
+      </ul>
+    </li>
+  </ul>
+</nav>
+      </div>
+    </div>
+    
+  </section>
+
     </div>
 
     
@@ -335,7 +422,12 @@
 
     
     
-    <script src="/assets/js/list.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.18.1/highlight.min.js"></script>
+<script src="/assets/js/single.js"></script>
+<script>
+  hljs.initHighlightingOnLoad();
+</script>
+
 
   </body>
 </html>

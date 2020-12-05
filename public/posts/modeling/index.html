@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>Categories</title>
+    <title>Modeling</title>
     <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 <meta http-equiv="X-UA-Compatible" content="ie=edge" />
@@ -92,12 +92,15 @@
   
   
   
+    
+    
+  
   
     
     <li>
-      <i class="fas fa-plus-circle"></i><a class="" href="/posts/modeling/">Modeling</a>
+      <i class="fas fa-minus-circle"></i><a class="active" href="/posts/modeling/">Modeling</a>
       
-      <ul class="">
+      <ul class="active">
         
   
   
@@ -178,6 +181,35 @@
   <div class="content container-fluid" id="content">
     <div class="container-fluid post-card-holder" id="post-card-holder">
       
+      
+        <div class="post-card">
+  <a href="/posts/modeling/iconix/iconix/" class="post-card-link">
+    <div class="card">
+      <div class="card-head">
+        <img class="card-img-top" src='/assets/images/default-hero.jpg'/>
+      </div>
+      <div class="card-body">
+        <h5 class="card-title">ICONIX</h5>
+        <p class="card-text post-summary">ICONIX概要 ICONIXとは、ユースケース駆動開発の手法の一つです。決して最近の技法ではなくUMLが登場した頃に誕生した手法ですが、本質的でスモールセットな側面も相まって、今日でも依然として有用な手法となっています。
+ICONIXの特徴は、ざっと纏めると以下の様になります。
+ ユースケース駆動で、ロバストネス図、シーケンス図へと動的モデルを詳細化すること 動的モデル導出の過程でクラス図の静的モデルを導出すること 分析過程でこれら動的側面と静的側面を突き合わせ検証と洗練を繰り返すこと 純粋なUMLに加えロバストネス図を活用し動的モデルのミッシング・リンクを補完すること  ICONIXの利点 用語定義 ICONIXを適用すると何が良いのでしょうか。まず第一に用語が洗練されます。用語の整理は一般的には用語集等を作成しますが、ここでの付加価値は用語の定義の厳密化だけです。多くの場合、用語自体には何の検証も入りません。ICONIXの場合は、プロセス全体を通じて用語を検証します。ここで検証された用語は以下に提示される厳密さを持ちます。
+   # 項目 説明     1 名称 用語の名称です。利用局面の想定して検証し抽象度や観点を検討しています   2 関連 用語間の関連です。用語同士の関連が明確になります   3 数的関連 用語間の数的関連です。1:1の関係にあるのか1:Nの関係にあるのかが瞭然です   4 関連の方向 用語の関連の方向性です。一方的な関連なのか双方的な関連なのかも見分けられます   5 関連の抽象関係 用語同士の抽象関係です。抽象化した用語や具象化した用語を確認できます   6 関連の保有関係 用語同士の保有・包含関係です。用語の構造が明確化されます   7 属性 用語が含む属性情報です。用語一つでどれだけの情報を保持しているかが明確になります   8 操作 用語が実行可能な操作です。用語の振る舞いを明示し責務を確認することができます    |
+ これだけ分析されているのであれば、一般的な用語集よりはるかに明確に分析できている分かると思います。一方で、この全て分析するのは相当骨が折れるのではという懸念も生じるかもしれません。確かに労力は掛かりますが、この分析は繰り返して行うため負荷は分散されます。特に最初の分析はラフなものでも構いません。むしろ最初から詳細な分析は不可能で、動的モデルの分析が進むのにつれて徐々に詳細化できてくる、というのが自然な流れです。最終的にはプログラムレベルのクラス図に近いレベルの詳細な概念モデルが醸成されます。
+ 厳密な動的モデル 動的モデルの分析はユースケース図・ロバストネス図・シーケンス図と詳細化されます。またそれぞれの図には明確な役割があります。簡単にまとめてみましょう。併せて、各分析過程でドメイン用語がどう洗練されるのかも提示します。
+   # 項目 説明 ドメイン用語     1 ユースケース図 利用者がシステムを利用する際のユースケースを明示します。機能要件の定義に相当します 名称と各種関連   2 ロバストネス図 各ユースケースの動きを概念レベルで捉えます。画面・処理・データの相互作用を定義します。機能設計に相当します エンティティとしての属性情報   3 シーケンス図 各ロバストネス分析のコントロール処理を詳細化します。クラス毎の責務を明示化するプログラム設計に相当します 各種クラスとしての操作 (振る舞い)    |</p>
+      </div>
+      <div class="card-footer">
+        <span class="float-left">December 3, 2020</span>
+        <a
+        href="/posts/modeling/iconix/iconix/"
+        class="float-right btn btn-outline-info btn-sm"
+        >Read</a
+        >
+      </div>
+    </div>
+  </a>
+</div>
+
       
     </div>
     <div class="paginator">

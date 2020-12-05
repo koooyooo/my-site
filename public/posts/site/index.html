@@ -23,6 +23,16 @@
 <link rel="stylesheet" href="/assets/css/style.css"/>
 
     
+    
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-CS5QEMMHQY"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+    
+      gtag('config', 'G-CS5QEMMHQY');
+    </script>
+    
     <link rel="stylesheet" href="/assets/css/layouts/list.css">
     <link rel="stylesheet" href="/assets/css/navigators/sidebar.css">
 
@@ -82,12 +92,78 @@
   
   
   
+  
+    
+    <li>
+      <i class="fas fa-plus-circle"></i><a class="" href="/posts/modeling/">Modeling</a>
+      
+      <ul class="">
+        
+  
+  
+  
+  
+  
+    
+    <li><a class="" href="/posts/modeling/iconix/">ICONIX</a></li>
+  
+
+
+      </ul>
+    </li>
+  
+
+  
+  
+  
+  
+  
+    
+    <li>
+      <i class="fas fa-plus-circle"></i><a class="" href="/posts/program/">Program</a>
+      
+      <ul class="">
+        
+  
+  
+  
+  
+  
+    
+    <li><a class="" href="/posts/program/golang/">Golang</a></li>
+  
+
+
+      </ul>
+    </li>
+  
+
+  
+  
+  
+  
     
     
   
   
     
-    <li><a class="active" href="/posts/site/">Site</a></li>
+    <li>
+      <i class="fas fa-minus-circle"></i><a class="active" href="/posts/site/">Site</a>
+      
+      <ul class="active">
+        
+  
+  
+  
+  
+  
+    
+    <li><a class="" href="/posts/site/hugo/">Hugo</a></li>
+  
+
+
+      </ul>
+    </li>
   
 
 
@@ -107,7 +183,7 @@
       
       
         <div class="post-card">
-  <a href="/posts/site/hugo-gcs/" class="post-card-link">
+  <a href="/posts/site/hugo/hugo-gcs/" class="post-card-link">
     <div class="card">
       <div class="card-head">
         <img class="card-img-top" src='/assets/images/default-hero.jpg'/>
@@ -126,7 +202,7 @@ FROMnginx:1.19-alpineCOPY ./public /usr/share/nginx/htmlEXPOSE80CMD [&#34;nginx&
       <div class="card-footer">
         <span class="float-left">November 29, 2020</span>
         <a
-        href="/posts/site/hugo-gcs/"
+        href="/posts/site/hugo/hugo-gcs/"
         class="float-right btn btn-outline-info btn-sm"
         >Read</a
         >
@@ -137,7 +213,7 @@ FROMnginx:1.19-alpineCOPY ./public /usr/share/nginx/htmlEXPOSE80CMD [&#34;nginx&
 
       
         <div class="post-card">
-  <a href="/posts/site/hugo/" class="post-card-link">
+  <a href="/posts/site/hugo/hugo/" class="post-card-link">
     <div class="card">
       <div class="card-head">
         <img class="card-img-top" src='/assets/images/default-hero.jpg'/>
@@ -149,13 +225,12 @@ FROMnginx:1.19-alpineCOPY ./public /usr/share/nginx/htmlEXPOSE80CMD [&#34;nginx&
 基本的には静的コンテンツを配信するだけなので、特段リッチな基盤は必要ありません。Webサーバ上にHTMLを置くだけでも良いわけです。特に、昨今はApache,NginxベースのWebサーバを立てないでも配信する手段があります。GitHubPagesを利用しても良いですし、Amazon S3 や Google Cloud Storageといった Cloud上のストレージサービスに配信機能がありますので、その中にコンテンツを配備し設定を公開とするだけで安価に配信可能な訳です。
 Hugo Hugo自体は、静的サイトジェネレーターと呼ばれるものです。静的サイトジェネレータの有名どころは Site Generators で確認できますが、Hugoは Golangでこれを実現したものとなります。多くの静的サイトジェネレータがJavaScriptを採用していますが、Golang製であるHugoは高速な処理に定評があります。
 Markdown Hugoではコンテンツ(文章)をMarkdownとして記述します。 平易な記法でリッチなコンテンツを表現できるため、最近では多くのBlogサービスもMarkdown記法に対応してきていますが、Hugoを始めとした静的サイトジェネレータはMarkdownを主たる記法としてコンテンツを生成しています。
-Static Site Generator 静的サイトジェネレータは「サイトは更新される回数より閲覧される回数の方が多いのだから、閲覧の度に動的なサイト生成する従来のツールは非効率だ、その代わりに更新時にサイトを生成して閲覧時には同じものを提示しよう」という発想によるものです。確かに閲覧時の処理負荷はかなり低い様で、各ページを高速に閲覧することができます。逆に、何らかの計算処理が必要な動的なページを生成しようと思ったら、静的サイトジェネレータには荷が重いということになります。
-Initialize 基本的な利用法は色々ありますが、</p>
+Static Site Generator 静的サイトジェネレータは「サイトは更新される回数より閲覧される回数の方が多いのだから、閲覧の度に動的なサイト生成する従来のツールは非効率だ、その代わりに更新時にサイトを生成して閲覧時には同じものを提示しよう」という発想によるものです。確かに閲覧時の処理負荷はかなり低い様で、各ページを高速に閲覧することができます。逆に、何らかの計算処理が必要な動的なページを生成しようと思ったら、静的サイトジェネレータには荷が重いということになります。</p>
       </div>
       <div class="card-footer">
         <span class="float-left">November 28, 2020</span>
         <a
-        href="/posts/site/hugo/"
+        href="/posts/site/hugo/hugo/"
         class="float-right btn btn-outline-info btn-sm"
         >Read</a
         >

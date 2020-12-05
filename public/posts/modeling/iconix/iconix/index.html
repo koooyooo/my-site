@@ -1,0 +1,527 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>ICONIX</title>
+    <meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<meta http-equiv="X-UA-Compatible" content="ie=edge" />
+
+
+<link rel="stylesheet" href="/assets/css/bootstrap.min.css"/>
+<link rel="stylesheet" href="/assets/css/layouts/main.css"/>
+<link rel="stylesheet" href="/assets/css/style.css"/>
+<link rel="stylesheet" href="/assets/css/navigators/navbar.css"/>
+
+
+<link href="https://fonts.googleapis.com/css2?family=Muli:wght@300;400;500;600" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/css/all.min.css" />
+
+
+<link rel="icon" type="image/png" href="/assets/images/favicon.png" />
+
+
+<link rel="stylesheet" href="/assets/css/style.css"/>
+
+    
+
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-CS5QEMMHQY"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-CS5QEMMHQY');
+</script>
+<meta name="description" content="ICONIX" />
+<link
+  rel="stylesheet"
+  href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.18.1/styles/atom-one-dark.min.css"
+/>
+<link rel="stylesheet" href="/assets/css/layouts/single.css"/>
+<link rel="stylesheet" href="/assets/css/navigators/sidebar.css">
+
+
+    
+    
+  </head>
+
+  <body data-spy="scroll" data-target="#TableOfContents" data-offset="80">
+    <div class="container-fluid bg-dimmed wrapper">
+      
+      
+    
+
+
+
+
+<nav class="navbar navbar-expand-xl top-navbar final-navbar shadow">
+  <div class="container">
+      <button class="navbar-toggler navbar-light" id="sidebar-toggler" type="button" onclick="toggleSidebar()">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <a class="navbar-brand" href="/">
+      <img src="/assets/images/main-logo.png">Koyo&#39;s Blog</a>
+    <button class="navbar-toggler navbar-light" id="toc-toggler" type="button" onclick="toggleTOC()">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div class="collapse navbar-collapse lang-selector" id="top-nav-items">
+      <ul class="navbar-nav ml-auto">
+      
+      </ul>
+    </div>
+  </div>
+  
+  <img src="/assets/images/main-logo.png" class="d-none" id="main-logo">
+  <img src="/assets/images/inverted-logo.png" class="d-none" id="inverted-logo">
+</nav>
+
+
+
+      
+      
+  <section class="sidebar-section" id="sidebar-section">
+    <div class="sidebar-holder">
+      <div class="sidebar" id="sidebar">
+        <input type="text" value="" placeholder="Search" data-search="" id="search-box" />
+        <div class="sidebar-tree">
+          <ul class="tree" id="tree">
+            <li id="list-heading"><a href="/posts" data-filter="all">Posts</a></li>
+            <div class="subtree">
+                
+  
+  
+  
+  
+  
+    
+    <li>
+      <i class="fas fa-plus-circle"></i><a class="" href="/posts/modeling/">Modeling</a>
+      
+      <ul class="">
+        
+  
+  
+  
+  
+  
+    
+    <li><a class="" href="/posts/modeling/iconix/">ICONIX</a></li>
+  
+
+
+      </ul>
+    </li>
+  
+
+  
+  
+  
+  
+  
+    
+    <li>
+      <i class="fas fa-plus-circle"></i><a class="" href="/posts/program/">Program</a>
+      
+      <ul class="">
+        
+  
+  
+  
+  
+  
+    
+    <li><a class="" href="/posts/program/golang/">Golang</a></li>
+  
+
+
+      </ul>
+    </li>
+  
+
+  
+  
+  
+  
+  
+    
+    <li>
+      <i class="fas fa-plus-circle"></i><a class="" href="/posts/site/">Site</a>
+      
+      <ul class="">
+        
+  
+  
+  
+  
+  
+    
+    <li><a class="" href="/posts/site/hugo/">Hugo</a></li>
+  
+
+
+      </ul>
+    </li>
+  
+
+
+            </div>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+
+      
+      
+<section class="content-section" id="content-section">
+  <div class="content">
+    <div class="container p-0 read-area">
+      
+      <div class="hero-area col-sm-12" id="hero-area" style='background-image: url(https://www.dm-on.info/assets/images/default-hero.jpg);'>
+      </div>
+
+      
+      <div class="page-content">
+        <div class="author-profile ml-auto align-self-lg-center">
+          <img class="rounded-circle" src='/images/author/john.png'/>
+          <h5 class="author-name">Koyo Onda</h5>
+          <p>December 3, 2020</p>
+        </div>
+
+        <div class="title">
+          <h1>ICONIX</h1>
+        </div>
+
+        <div class="post-content" id="post-content">
+          <h2 id="iconix概要">ICONIX概要</h2>
+<p>ICONIXとは、ユースケース駆動開発の手法の一つです。決して最近の技法ではなくUMLが登場した頃に誕生した手法ですが、本質的でスモールセットな側面も相まって、今日でも依然として有用な手法となっています。</p>
+<p>ICONIXの特徴は、ざっと纏めると以下の様になります。</p>
+<ul>
+<li>ユースケース駆動で、ロバストネス図、シーケンス図へと動的モデルを詳細化すること</li>
+<li>動的モデル導出の過程でクラス図の静的モデルを導出すること</li>
+<li>分析過程でこれら動的側面と静的側面を突き合わせ検証と洗練を繰り返すこと</li>
+<li>純粋なUMLに加えロバストネス図を活用し動的モデルのミッシング・リンクを補完すること</li>
+</ul>
+<h2 id="iconixの利点">ICONIXの利点</h2>
+<h3 id="用語定義">用語定義</h3>
+<p>ICONIXを適用すると何が良いのでしょうか。まず第一に<strong>用語が洗練</strong>されます。用語の整理は一般的には用語集等を作成しますが、ここでの付加価値は用語の定義の厳密化だけです。多くの場合、用語自体には何の検証も入りません。ICONIXの場合は、プロセス全体を通じて用語を検証します。ここで検証された用語は以下に提示される厳密さを持ちます。</p>
+<table>
+<thead>
+<tr>
+<th>#</th>
+<th>項目</th>
+<th>説明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td>名称</td>
+<td>用語の名称です。利用局面の想定して検証し抽象度や観点を検討しています</td>
+</tr>
+<tr>
+<td>2</td>
+<td>関連</td>
+<td>用語間の関連です。用語同士の関連が明確になります</td>
+</tr>
+<tr>
+<td>3</td>
+<td>数的関連</td>
+<td>用語間の数的関連です。1:1の関係にあるのか1:Nの関係にあるのかが瞭然です</td>
+</tr>
+<tr>
+<td>4</td>
+<td>関連の方向</td>
+<td>用語の関連の方向性です。一方的な関連なのか双方的な関連なのかも見分けられます</td>
+</tr>
+<tr>
+<td>5</td>
+<td>関連の抽象関係</td>
+<td>用語同士の抽象関係です。抽象化した用語や具象化した用語を確認できます</td>
+</tr>
+<tr>
+<td>6</td>
+<td>関連の保有関係</td>
+<td>用語同士の保有・包含関係です。用語の構造が明確化されます</td>
+</tr>
+<tr>
+<td>7</td>
+<td>属性</td>
+<td>用語が含む属性情報です。用語一つでどれだけの情報を保持しているかが明確になります</td>
+</tr>
+<tr>
+<td>8</td>
+<td>操作</td>
+<td>用語が実行可能な操作です。用語の振る舞いを明示し責務を確認することができます</td>
+</tr>
+</tbody>
+</table>
+<p>|</p>
+<blockquote>
+<p>これだけ分析されているのであれば、一般的な用語集よりはるかに明確に分析できている分かると思います。一方で、この全て分析するのは相当骨が折れるのではという懸念も生じるかもしれません。確かに労力は掛かりますが、この分析は繰り返して行うため負荷は分散されます。特に最初の分析はラフなものでも構いません。むしろ最初から詳細な分析は不可能で、動的モデルの分析が進むのにつれて徐々に詳細化できてくる、というのが自然な流れです。最終的にはプログラムレベルのクラス図に近いレベルの詳細な概念モデルが醸成されます。</p>
+</blockquote>
+<h3 id="厳密な動的モデル">厳密な動的モデル</h3>
+<p>動的モデルの分析はユースケース図・ロバストネス図・シーケンス図と詳細化されます。またそれぞれの図には明確な役割があります。簡単にまとめてみましょう。併せて、各分析過程でドメイン用語がどう洗練されるのかも提示します。</p>
+<table>
+<thead>
+<tr>
+<th>#</th>
+<th>項目</th>
+<th>説明</th>
+<th>ドメイン用語</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td>ユースケース図</td>
+<td>利用者がシステムを利用する際のユースケースを明示します。機能要件の定義に相当します</td>
+<td>名称と各種関連</td>
+</tr>
+<tr>
+<td>2</td>
+<td>ロバストネス図</td>
+<td>各ユースケースの動きを概念レベルで捉えます。画面・処理・データの相互作用を定義します。機能設計に相当します</td>
+<td>エンティティとしての属性情報</td>
+</tr>
+<tr>
+<td>3</td>
+<td>シーケンス図</td>
+<td>各ロバストネス分析のコントロール処理を詳細化します。クラス毎の責務を明示化するプログラム設計に相当します</td>
+<td>各種クラスとしての操作 (振る舞い)</td>
+</tr>
+</tbody>
+</table>
+<p>|<br>
+こうしてみると、ラフな仮説から整合性を担保しながら詳細化してゆく、とても理に適った分析手法だということが分かるのではないかと思います。また、無駄に多くの設計書を書き上げるのではなく、最小限のUML(ロバストネス図も含む)のみで分析を進められるというのも工数的に魅力ですし、そのUMLの力を最大限に引き出して、無駄なくプログラムに落としやすい分析・設計工程が踏めるというのも魅力です。</p>
+<p>概要とその価値を紹介したところで、次回はICONIXの分析工程を一つ一つみてゆきたいと思います。</p>
+
+        </div>
+
+        
+        
+          <div class="btn-improve-page">
+              <a href="https://github.com/koooyooo/my-site/edit/master/content/posts/modeling/iconix/iconix.md">
+                <i class="fas fa-code-branch"></i>
+                Improve this page
+              </a>
+          </div>
+        
+
+        
+      <hr />
+        <div class="row next-prev-navigator">
+
+
+  
+
+  
+
+  
+    
+    
+      
+        
+        
+        <div class="col-md-12 next-article">
+          <a href="/posts/site/hugo/hugo-gcs/" class="btn btn-outline-info">
+            <span>Next <i class="fas fa-chevron-circle-right"></i></span>
+            <br />
+            <span>Hugo Gcs</span>
+          </a>
+        </div>
+      
+    
+  
+
+</div>
+
+      <hr />
+      
+      
+      </div>
+    </div>
+  </div>
+  
+</section>
+
+
+      
+      
+  <section class="toc-section" id="toc-section">
+    
+    <div class="toc-holder">
+      <h5 class="text-center pl-3">Table of Contents</h5>
+      <hr>
+      <div class="toc">
+        <nav id="TableOfContents">
+  <ul>
+    <li><a href="#iconix概要">ICONIX概要</a></li>
+    <li><a href="#iconixの利点">ICONIXの利点</a>
+      <ul>
+        <li><a href="#用語定義">用語定義</a></li>
+        <li><a href="#厳密な動的モデル">厳密な動的モデル</a></li>
+      </ul>
+    </li>
+  </ul>
+</nav>
+      </div>
+    </div>
+    
+  </section>
+
+    </div>
+
+    
+
+  
+
+
+
+
+  
+
+
+
+
+  
+  
+    
+  
+
+
+<footer class="container-fluid text-center align-content-center footer pb-2">
+  <div class="container pt-5">
+    <div class="row text-left">
+      <div class="col-md-4 col-sm-12">
+        <h5>Navigation</h5>
+        
+        <ul>
+            
+              
+              
+                
+              
+              <li class="nav-item">
+                <a class="smooth-scroll" href="#about">About</a>
+              </li>
+            
+            
+              
+              
+                
+              
+              <li class="nav-item">
+                <a class="smooth-scroll" href="#skills">Skills</a>
+              </li>
+            
+            
+              
+              
+                
+              
+              <li class="nav-item">
+                <a class="smooth-scroll" href="#experiences">Experiences</a>
+              </li>
+            
+            
+              
+              
+                
+              
+              <li class="nav-item">
+                <a class="smooth-scroll" href="#projects">Projects</a>
+              </li>
+            
+            
+              
+              
+                
+              
+              <li class="nav-item">
+                <a class="smooth-scroll" href="#recent-posts">Recent Posts</a>
+              </li>
+            
+        </ul>
+        
+
+      </div>
+      
+      <div class="col-md-4 col-sm-12">
+        <h5>Contact me:</h5>
+        <ul>
+          
+          <li><span>Email: </span> <span>johndoe@example.com</span></li>
+          
+          <li><span>Phone: </span> <span>&#43;0123456789</span></li>
+          
+        </ul>
+      </div>
+      
+      
+      <div class="col-md-4 col-sm-12">
+        
+        <p>Stay up to date with email notification</p>
+        <form>
+          <div class="form-group">
+            <input
+              type="email"
+              class="form-control"
+              id="exampleInputEmail1"
+              aria-describedby="emailHelp"
+              placeholder="Enter email"
+            />
+            <small id="emailHelp" class="form-text text-muted"
+              >We&#39;ll never share your email with anyone else.</small
+            >
+          </div>
+          <button type="submit" class="btn btn-info">Submit</button>
+        </form>
+      </div>
+      
+    </div>
+  </div>
+  <hr />
+  <div class="container">
+    <div class="row text-left">
+      <div class="col-md-4">
+        <a id="theme" href="https://github.com/hossainemruz/toha" target="#">
+          <img src="/assets/images/inverted-logo.png">
+          Toha
+        </a>
+      </div>
+      <div class="col-md-4 text-center">© 2020 My Copyright.</div>
+      <div class="col-md-4 text-right">
+        <a id="hugo" href="https://gohugo.io/">Powered by
+        <img
+          src="/assets/images/hugo-logo-wide.svg"
+          alt="Hugo Logo"
+          height="18"
+        />
+        </a>
+      </div>
+    </div>
+  </div>
+</footer>
+
+    <script src="/assets/js/jquery-3.4.1.min.js"></script>
+<script src="/assets/js/popper.min.js"></script>
+<script src="/assets/js/bootstrap.min.js"></script>
+
+<script src="/assets/js/navbar.js"></script>
+<script src="/assets/js/main.js"></script>
+
+
+    
+    
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.18.1/highlight.min.js"></script>
+<script src="/assets/js/single.js"></script>
+<script>
+  hljs.initHighlightingOnLoad();
+</script>
+
+
+  </body>
+</html>
