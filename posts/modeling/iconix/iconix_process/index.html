@@ -1,0 +1,522 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>ICONIX Process</title>
+    <meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<meta http-equiv="X-UA-Compatible" content="ie=edge" />
+
+
+<link rel="stylesheet" href="/assets/css/bootstrap.min.css"/>
+<link rel="stylesheet" href="/assets/css/layouts/main.css"/>
+<link rel="stylesheet" href="/assets/css/style.css"/>
+<link rel="stylesheet" href="/assets/css/navigators/navbar.css"/>
+
+
+<link href="https://fonts.googleapis.com/css2?family=Muli:wght@300;400;500;600" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/css/all.min.css" />
+
+
+<link rel="icon" type="image/png" href="/assets/images/favicon.png" />
+
+
+<link rel="stylesheet" href="/assets/css/style.css"/>
+
+    
+
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-CS5QEMMHQY"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-CS5QEMMHQY');
+</script>
+<meta name="description" content="ICONIX Process" />
+<link
+  rel="stylesheet"
+  href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.18.1/styles/atom-one-dark.min.css"
+/>
+<link rel="stylesheet" href="/assets/css/layouts/single.css"/>
+<link rel="stylesheet" href="/assets/css/navigators/sidebar.css">
+
+
+    
+    
+  </head>
+
+  <body data-spy="scroll" data-target="#TableOfContents" data-offset="80">
+    <div class="container-fluid bg-dimmed wrapper">
+      
+      
+    
+
+
+
+
+<nav class="navbar navbar-expand-xl top-navbar final-navbar shadow">
+  <div class="container">
+      <button class="navbar-toggler navbar-light" id="sidebar-toggler" type="button" onclick="toggleSidebar()">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <a class="navbar-brand" href="/">
+      <img src="/assets/images/main-logo.png">Koyo&#39;s Blog</a>
+    <button class="navbar-toggler navbar-light" id="toc-toggler" type="button" onclick="toggleTOC()">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div class="collapse navbar-collapse lang-selector" id="top-nav-items">
+      <ul class="navbar-nav ml-auto">
+      
+      </ul>
+    </div>
+  </div>
+  
+  <img src="/assets/images/main-logo.png" class="d-none" id="main-logo">
+  <img src="/assets/images/inverted-logo.png" class="d-none" id="inverted-logo">
+</nav>
+
+
+
+      
+      
+  <section class="sidebar-section" id="sidebar-section">
+    <div class="sidebar-holder">
+      <div class="sidebar" id="sidebar">
+        <input type="text" value="" placeholder="Search" data-search="" id="search-box" />
+        <div class="sidebar-tree">
+          <ul class="tree" id="tree">
+            <li id="list-heading"><a href="/posts" data-filter="all">Posts</a></li>
+            <div class="subtree">
+                
+  
+  
+  
+  
+  
+    
+    <li>
+      <i class="fas fa-plus-circle"></i><a class="" href="/posts/modeling/">Modeling</a>
+      
+      <ul class="">
+        
+  
+  
+  
+  
+  
+    
+    <li><a class="" href="/posts/modeling/iconix/">ICONIX</a></li>
+  
+
+
+      </ul>
+    </li>
+  
+
+  
+  
+  
+  
+  
+    
+    <li>
+      <i class="fas fa-plus-circle"></i><a class="" href="/posts/program/">Program</a>
+      
+      <ul class="">
+        
+  
+  
+  
+  
+  
+    
+    <li><a class="" href="/posts/program/golang/">Golang</a></li>
+  
+
+
+      </ul>
+    </li>
+  
+
+  
+  
+  
+  
+  
+    
+    <li>
+      <i class="fas fa-plus-circle"></i><a class="" href="/posts/site/">Site</a>
+      
+      <ul class="">
+        
+  
+  
+  
+  
+  
+    
+    <li><a class="" href="/posts/site/hugo/">Hugo</a></li>
+  
+
+
+      </ul>
+    </li>
+  
+
+
+            </div>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+
+      
+      
+<section class="content-section" id="content-section">
+  <div class="content">
+    <div class="container p-0 read-area">
+      
+      <div class="hero-area col-sm-12" id="hero-area" style='background-image: url(https://www.dm-on.info/assets/images/default-hero.jpg);'>
+      </div>
+
+      
+      <div class="page-content">
+        <div class="author-profile ml-auto align-self-lg-center">
+          <img class="rounded-circle" src='/images/author/john.png'/>
+          <h5 class="author-name">Koyo Onda</h5>
+          <p>December 6, 2020</p>
+        </div>
+
+        <div class="title">
+          <h1>ICONIX Process</h1>
+        </div>
+
+        <div class="post-content" id="post-content">
+          <h2 id="iconixの分析工程">ICONIXの分析工程</h2>
+<p>ここでは、ICONIXの分析工程を見てゆきます。最初に全てのベースとなる静的モデルのドメイン分析、続けて動的モデルのユースケース分析、ロバストネス分析、そしてシーケンス分析と進みます。この過程で、全ての主要な用語はドメイン分析で作成したドメイン用語集を元に行わなければなりません。</p>
+<p>ドメイン用語集に「ユーザー」と定義したならば、以降の分析に出てくる用語は「利用者」ではなく「ユーザー」なのです。「利用者」の方が適切だと思ったのならば、まずドメイン用語集を直さなければなりません。では、最初にそのドメイン分析から入りたいと思います。</p>
+<h3 id="ドメイン分析">ドメイン分析</h3>
+<p>ドメイン用語集は全ての工程の基本です。フワフワとした曖昧な言葉を棄て、正確で本質的な用語を捉えてゆくと、思考がクリアになります。また、ドメイン用語は属性も定義しますので、「ユーザー」と定義した際に「ユーザーID」や「氏名」「住所」等が含まれているのか否かも明確になります。</p>
+<p>仮に「ユーザーID」や「氏名」「住所」等が含まれていた場合は、会話の中で「ユーザーを渡し…」といった場合にこれらの情報も付随することが分かるわけです。厳密さだけではなく簡潔さも手に入れる事ができます。会話と文書が徐々に変わってゆくのが体験できるかも知れません。</p>
+<hr>
+<p>ドメイン分析を行うには、最初に<strong>ドメイン用語の候補を抽出</strong>します。これはドメインエキスパートが提供するユーザーストーリー等から導き出します。何やら難しそうに聞こえますが、ドメインエキスパートというのは業務に詳しい担当者、ユーザーストーリーとは業務の流れを説明した文章です。簡単に説明すると「お話を聞いたり文章を読んだりしてキーワードを見つける」という作業に過ぎません。</p>
+<p>一通りドメイン用語が洗い出せたなら、次に<strong>用語同士の関連</strong>を洗い出します。最初に<strong>単純な線</strong>で関連を引いてみましょう。ここで注意するのは、厳密に定義しすぎると多くの用語同士に線が引かれてゴチャついてくる事態です。原則としてドメイン分析はモデリング作業なので、全て正確に洗い出すというより「大事な部分を強調し細かい部分は無視する」というスタンスが重要です。余計な部分を削ぎ落としてこそ大事な部分が目立つからです。</p>
+<p>用語間に線を引き終えたら、次に線を三種類に分類しましょう。「関連」「汎化」「集約」の関係に大きく分類できれば良いと思います。</p>
+<table>
+<thead>
+<tr>
+<th>#</th>
+<th>項目</th>
+<th>説明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td>関連</td>
+<td>用語同士の対等な関係です。AはBを使う、AがBを生成する、AはBを参照する…等です</td>
+</tr>
+<tr>
+<td>2</td>
+<td>汎化</td>
+<td>用語同士の抽象的な関係です。&ldquo;is a&rdquo; とも表現され「課金ユーザー」は「ユーザ」を継承する…等です</td>
+</tr>
+<tr>
+<td>3</td>
+<td>集約</td>
+<td>用語同士の構造的な関係です。&ldquo;has a&rdquo; とも表現され「エンジン」は「バイク」に含まれる…等です</td>
+</tr>
+</tbody>
+</table>
+<p> <br>
+一旦大きく分類が出来たら、次に関連を詳細化しましょう。</p>
+<table>
+<thead>
+<tr>
+<th>#</th>
+<th>項目</th>
+<th>説明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td>関連</td>
+<td>用語同士の関連に名前をつけ、関連が片方向のものであれば関連線を矢印(→)に変更します</td>
+</tr>
+<tr>
+<td>2</td>
+<td>汎化</td>
+<td>汎化関係を「汎化」と「実現」に細かく分類します</td>
+</tr>
+<tr>
+<td>3</td>
+<td>集約</td>
+<td>集約関係を「集約」と「コンポジション」に細かく分類します</td>
+</tr>
+</tbody>
+</table>
+<p> <br>
+関連の詳細化が終わったら、汎化(実現) 以外の関連に数的な関係を定義します。例えば「バイク」と「エンジン」の数的関係は 1:1 です。最大300人が入れる映画館とお客さんの数的関係は 1:0..300です。Webページと閲覧者の関係は、0..*:0..*です。どちらも0にも出来ますし、無限にもできるからです。</p>
+<blockquote>
+<p>但し、バイクの生産中の過程も管理する様であれば、組立て前のバイクや、部品としてのエンジンもあるかも知れません。バイクから見てエンジンは0か1、エンジンから見たバイクも0か1、そうなると双方の関係は 0..1:0..1となりそうです。<br>
+(0…1は 0以上1以下を表します)</p>
+</blockquote>
+<table>
+<thead>
+<tr>
+<th>#</th>
+<th>項目</th>
+<th>説明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td>目的</td>
+<td>用語の定義と関連を明確にし、文書や会話で利用しつつ、プログラムに落としやすくする</td>
+</tr>
+<tr>
+<td>2</td>
+<td>手法</td>
+<td>ユーザーストーリー・会話の中から主要な単語を拾う</td>
+</tr>
+</tbody>
+</table>
+<h3 id="ユースケース分析">ユースケース分析</h3>
+<h3 id="ロバストネス分析">ロバストネス分析</h3>
+<h3 id="シーケンス分析">シーケンス分析</h3>
+
+        </div>
+
+        
+        
+          <div class="btn-improve-page">
+              <a href="https://github.com/koooyooo/my-site/edit/master/content/posts/modeling/iconix/iconix_process.md">
+                <i class="fas fa-code-branch"></i>
+                Improve this page
+              </a>
+          </div>
+        
+
+        
+      <hr />
+        <div class="row next-prev-navigator">
+
+
+  
+
+  
+
+  
+
+  
+    
+    
+      
+        
+        
+        <div class="col-md-12 next-article">
+          <a href="/posts/modeling/iconix/iconix/" class="btn btn-outline-info">
+            <span>Next <i class="fas fa-chevron-circle-right"></i></span>
+            <br />
+            <span>ICONIX</span>
+          </a>
+        </div>
+      
+    
+  
+
+</div>
+
+      <hr />
+      
+      
+      </div>
+    </div>
+  </div>
+  
+</section>
+
+
+      
+      
+  <section class="toc-section" id="toc-section">
+    
+    <div class="toc-holder">
+      <h5 class="text-center pl-3">Table of Contents</h5>
+      <hr>
+      <div class="toc">
+        <nav id="TableOfContents">
+  <ul>
+    <li><a href="#iconixの分析工程">ICONIXの分析工程</a>
+      <ul>
+        <li><a href="#ドメイン分析">ドメイン分析</a></li>
+        <li><a href="#ユースケース分析">ユースケース分析</a></li>
+        <li><a href="#ロバストネス分析">ロバストネス分析</a></li>
+        <li><a href="#シーケンス分析">シーケンス分析</a></li>
+      </ul>
+    </li>
+  </ul>
+</nav>
+      </div>
+    </div>
+    
+  </section>
+
+    </div>
+
+    
+
+  
+
+
+
+
+  
+
+
+
+
+  
+  
+    
+  
+
+
+<footer class="container-fluid text-center align-content-center footer pb-2">
+  <div class="container pt-5">
+    <div class="row text-left">
+      <div class="col-md-4 col-sm-12">
+        <h5>Navigation</h5>
+        
+        <ul>
+            
+              
+              
+                
+              
+              <li class="nav-item">
+                <a class="smooth-scroll" href="#about">About</a>
+              </li>
+            
+            
+              
+              
+                
+              
+              <li class="nav-item">
+                <a class="smooth-scroll" href="#skills">Skills</a>
+              </li>
+            
+            
+              
+              
+                
+              
+              <li class="nav-item">
+                <a class="smooth-scroll" href="#experiences">Experiences</a>
+              </li>
+            
+            
+              
+              
+                
+              
+              <li class="nav-item">
+                <a class="smooth-scroll" href="#projects">Projects</a>
+              </li>
+            
+            
+              
+              
+                
+              
+              <li class="nav-item">
+                <a class="smooth-scroll" href="#recent-posts">Recent Posts</a>
+              </li>
+            
+        </ul>
+        
+
+      </div>
+      
+      <div class="col-md-4 col-sm-12">
+        <h5>Contact me:</h5>
+        <ul>
+          
+          <li><span>Email: </span> <span>johndoe@example.com</span></li>
+          
+          <li><span>Phone: </span> <span>&#43;0123456789</span></li>
+          
+        </ul>
+      </div>
+      
+      
+      <div class="col-md-4 col-sm-12">
+        
+        <p>Stay up to date with email notification</p>
+        <form>
+          <div class="form-group">
+            <input
+              type="email"
+              class="form-control"
+              id="exampleInputEmail1"
+              aria-describedby="emailHelp"
+              placeholder="Enter email"
+            />
+            <small id="emailHelp" class="form-text text-muted"
+              >We&#39;ll never share your email with anyone else.</small
+            >
+          </div>
+          <button type="submit" class="btn btn-info">Submit</button>
+        </form>
+      </div>
+      
+    </div>
+  </div>
+  <hr />
+  <div class="container">
+    <div class="row text-left">
+      <div class="col-md-4">
+        <a id="theme" href="https://github.com/hossainemruz/toha" target="#">
+          <img src="/assets/images/inverted-logo.png">
+          Toha
+        </a>
+      </div>
+      <div class="col-md-4 text-center">© 2020 My Copyright.</div>
+      <div class="col-md-4 text-right">
+        <a id="hugo" href="https://gohugo.io/">Powered by
+        <img
+          src="/assets/images/hugo-logo-wide.svg"
+          alt="Hugo Logo"
+          height="18"
+        />
+        </a>
+      </div>
+    </div>
+  </div>
+</footer>
+
+    <script src="/assets/js/jquery-3.4.1.min.js"></script>
+<script src="/assets/js/popper.min.js"></script>
+<script src="/assets/js/bootstrap.min.js"></script>
+
+<script src="/assets/js/navbar.js"></script>
+<script src="/assets/js/main.js"></script>
+
+
+    
+    
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.18.1/highlight.min.js"></script>
+<script src="/assets/js/single.js"></script>
+<script>
+  hljs.initHighlightingOnLoad();
+</script>
+
+
+  </body>
+</html>
