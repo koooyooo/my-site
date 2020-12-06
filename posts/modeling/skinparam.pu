@@ -1,0 +1,24 @@
+@startuml
+
+' ----------------------------------------
+' スキン設定
+' ----------------------------------------
+
+' 可視性のアイコンを表示にする
+' skinparam classAttributeIconSize 0
+
+' モノクロにする
+skinparam monochrome true
+
+' 影をなくす
+skinparam shadowing false
+
+' 手描き風にする
+' skinparam handwritten true
+
+' skinparam backgroundColor #DDDDDD
+' skinparam ParticipantBackgroundColor white
+' skinparam ActorBackgroundColor white
+' skinparam ParticipantBorderColor black
+
+@enduml
