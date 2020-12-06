@@ -1,0 +1,28 @@
+@startuml
+!include ../skinparam.pu
+
+' 関連
+Class A {
+}
+Class B {
+}
+A "1" -right-> "0..*" B: 利用する >
+
+' 汎化
+Interface 情報保護 {
+  + 暗号化する()
+} 
+Class ユーザ {
+  + 暗号化する()
+}
+Class 課金ユーザ{}
+情報保護 <|.. ユーザ
+ユーザ <|-- 課金ユーザ
+
+' 集約
+Class エンジン
+Class バイク
+' バイク o-- エンジン
+バイク "0..1" *-- "0..1" エンジン
+
+@enduml
