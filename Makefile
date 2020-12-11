@@ -1,20 +1,3 @@
-.PHONY: run
-run:
-	@ hugo serve -D
-
-.PHONY: nginx
-nginx:
-	@ docker run -p 80:80 -v $(pwd)/public:/usr/share/nginx/html nginx
-
-.PHONY: docker-build
-docker-build:
-	@ docker build -t nginx-hugo .
-
-.PHONY: docker-run
-docker-run:
-	@ docker container run --rm --name nginx-hugo -p 80:80 nginx-hugo
-
-
 # gcloud domains list-user-verified
 # gcloud domains verify BASE-DOMAIN
 # gcloud beta run domain-mappings create --service hugo-server --domain site.dm-on.info --platform=managed --region=asia-northeast1
