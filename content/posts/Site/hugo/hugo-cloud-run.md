@@ -92,11 +92,16 @@ Successfully tagged my-server:latest
 
 ### Container Registryへの登録
 
-Dockerイメージに問題が無さそうであれば、Container Registryにイメージを上げてみます。複数のコマンドを実行するのが大変なので、今回はMakefileにまとめていますが、変数部分を埋めてシェルから個別のコマンドを叩けば問題ありません。
+Dockerイメージに問題が無さそうであれば、Container Registryにイメージを上げてみます。複数のコマンドを実行するのが大変なので、今回はMakefileにまとめていますが、変数部分を埋めてシェルからpush-image部分の個別のコマンドを叩けば問題ありません。
 
 ```Makefile
 GCP_PROJECT_ID = my-gcp-project
 DOCKR_IMAGE_NAME = my-server
+
+.PHONY: publish
+publish:
+	@ rm -rf ./public; \
+	  hugo
 
 .PHONY: push-image
 push-image: publish
