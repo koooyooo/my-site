@@ -53,8 +53,13 @@ Successfully tagged my-server:latest
 10-listen-on-ipv6-by-default.sh: Enabled listen on IPv6 in /etc/nginx/conf.d/default.conf
 /docker-entrypoint.sh: Launching /docker-entrypoint.d/20-envsubst-on-templates.sh
 /docker-entrypoint.sh: Configuration complete; ready <span style=color:#66d9ef>for</span> start up
-</code></pre></div><p>ブラウザで <code>http://localhost:80</code> にアクセスしてみます(<code>:80</code>部分は無くても動きます)。無事にページが見られたでしょうか？</p><h3 id=container-registryへの登録>Container Registryへの登録</h3><p>Dockerイメージに問題が無さそうであれば、Container Registryにイメージを上げてみます。複数のコマンドを実行するのが大変なので、今回はMakefileにまとめていますが、変数部分を埋めてシェルから個別のコマンドを叩けば問題ありません。</p><div class=highlight><pre style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-Makefile data-lang=Makefile>GCP_PROJECT_ID <span style=color:#f92672>=</span> my-gcp-project
+</code></pre></div><p>ブラウザで <code>http://localhost:80</code> にアクセスしてみます(<code>:80</code>部分は無くても動きます)。無事にページが見られたでしょうか？</p><h3 id=container-registryへの登録>Container Registryへの登録</h3><p>Dockerイメージに問題が無さそうであれば、Container Registryにイメージを上げてみます。複数のコマンドを実行するのが大変なので、今回はMakefileにまとめていますが、変数部分を埋めてシェルからpush-image部分の個別のコマンドを叩けば問題ありません。</p><div class=highlight><pre style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-Makefile data-lang=Makefile>GCP_PROJECT_ID <span style=color:#f92672>=</span> my-gcp-project
 DOCKR_IMAGE_NAME <span style=color:#f92672>=</span> my-server
+
+<span style=color:#a6e22e>.PHONY</span><span style=color:#f92672>:</span> publish
+<span style=color:#a6e22e>publish</span><span style=color:#f92672>:</span>
+	@ rm -rf ./public; <span style=color:#ae81ff>\
+</span><span style=color:#ae81ff></span>	  hugo
 
 <span style=color:#a6e22e>.PHONY</span><span style=color:#f92672>:</span> push-image
 <span style=color:#a6e22e>push-image</span><span style=color:#f92672>:</span> publish
