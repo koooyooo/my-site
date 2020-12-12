@@ -11,19 +11,37 @@ publish:
 	@ rm -rf ./public; \
 	  hugo
 
+# .PHONY: push-image-sa
+# push-image-sa: publish
+# 	@ cat "${HOME}/.gcp/soi-cloud-708d1b5c40f7.json" | docker login -u _json_key --password-stdin https://gcr.io; \
+# 		docker rmi gcr.io/dm-on-site/hugo-server:latest; \
+#     docker build -t gcr.io/dm-on-site/hugo-server:latest . ;\
+# 	  docker push gcr.io/dm-on-site/hugo-server:latest
+
+GCP_PROJECT_ID = dm-on-site
+DOCKER_IMAGE_NAME = hugo-server
+
 .PHONY: push-image
 push-image: publish
-	@ cat "${HOME}/.gcp/soi-cloud-708d1b5c40f7.json" | docker login -u _json_key --password-stdin https://gcr.io; \
-		docker rmi gcr.io/dm-on-site/hugo-server:latest; \
-    docker build -t gcr.io/dm-on-site/hugo-server:latest . ;\
-	  docker push gcr.io/dm-on-site/hugo-server:latest
+	@ gcloud auth login; \
+    gcloud config set project $(GCP_PROJECT_ID); \
+    gcloud auth configure-docker; \
+    docker rmi gcr.io/$(GCP_PROJECT_ID)/$(DOCKER_IMAGE_NAME):latest; \
+    docker build -t gcr.io/$(GCP_PROJECT_ID)/$(DOCKER_IMAGE_NAME):latest . ;\
+    docker push gcr.io/$(GCP_PROJECT_ID)/$(DOCKER_IMAGE_NAME):latest
+
+CLOUD_RUN_SERVICE = hugo-server
 
 .PHONY: deploy-image
 deploy-image: push-image
-	@ gcloud beta run deploy hugo-server \
-	  --image gcr.io/dm-on-site/hugo-server:latest \
-		--port 80 \
-		--platform=managed \
-		--region=asia-northeast1
+	@ gcloud beta run deploy $(CLOUD_RUN_SERVICE) \
+    --image gcr.io/$(GCP_PROJECT_ID)/$(DOCKER_IMAGE_NAME):latest \
+    --port 80 \
+    --platform=managed \
+    --region=asia-northeast1
 
 # https://qiita.com/szk3/items/38a3dba7fdfed189f4c9
+
+.PHONY: list-images
+list-images:
+	@ gcloud container images list-tags gcr.io/dm-on-site/hugo-server
