@@ -181,9 +181,6 @@ $ gcloud domains verify my-service.my-domain.com
 
 ![](/posts/site/hugo/web-master-central.png)
 
-確認が終わったら、`Cloud DNS`上で確認に使った TXTレコードを削除し、代わりに同名の `CNAME`レコードを追加します。  
-(同名のレコードを多重登録できないので、まずTXTレコードに認証し、次にそれを消してCNAMEレコードを登録し…という手順を踏む必要があります)
-
 ![](/posts/site/hugo/cloud-dns.png)
 
 | # | 設定名 | 設定値 |
@@ -193,6 +190,8 @@ $ gcloud domains verify my-service.my-domain.com
 | 3 | TTLユニット | 分 |
 | 3 | テキストデータ | `ghs.googlehosted.com.` |
 
+確認が終わったら、`Cloud DNS`上で確認に使った TXTレコードを削除し、代わりに同名の `CNAME`レコードを追加します。  
+(同名のレコードを多重登録できないので、まずTXTレコードに認証し、次にそれを消してCNAMEレコードを登録し…という手順を踏む必要があります)
 &nbsp;  
 最後に、Cloud Run上にドメインとの連携を指示します。
 
