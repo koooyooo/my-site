@@ -5,6 +5,8 @@ baseURL: https://docs.dm-on.info/
 # https://toha-guides.netlify.app/posts/
 # https://github.com/hugo-toha/toha
 
+disqusShortname: docs-dm-on-info
+
 languageCode: en-us
 title: "Koyo's Blog"
 theme: "toha"
