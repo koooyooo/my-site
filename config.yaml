@@ -11,6 +11,7 @@ languageCode: en-us
 title: "Koyo's Blog"
 theme: "toha"
 
+
 # Manage languages
 # For any more details, you can check the official documentation: https://gohugo.io/content-management/multilingual/
 languages:
@@ -24,6 +25,11 @@ markup:
     startLevel: 2
     endLevel: 6
     ordered: false
+  # Enable RAW HTML in the Markdown File
+  # https://toha-guides.netlify.app/posts/configuration/site-parameters/
+  goldmark:
+    renderer:
+      unsafe: true
 
 # Enable global emoji support
 enableEmoji: true
@@ -43,6 +49,7 @@ params:
   # Currently, you can just hide it from the footer.
   newsletter:
     enable: true
+
 
 deployment:
   targets:
