@@ -1,5 +1,5 @@
 @startuml
-!include ../skinparam.pu
+!include ../../skinparam.pu
 
 ' 関連
 Class A {

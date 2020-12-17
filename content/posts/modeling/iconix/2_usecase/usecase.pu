@@ -1,0 +1,6 @@
+@startuml
+!include ../../skinparam.pu
+
+:アクター:
+
+@enduml
