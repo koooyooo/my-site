@@ -3,4 +3,10 @@
 
 :アクター:
 
+:API一般管理者: <|-- :API品質責任者:
+
+:API一般管理者: -right- (APIの稼働を確認する) 
+(APIの稼働を確認する) -right-> (ログインする): <<include>>
+
+:API品質責任者: -right- (APIの登録を承認する)
 @enduml
