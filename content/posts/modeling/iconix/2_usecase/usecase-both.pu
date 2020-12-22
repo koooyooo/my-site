@@ -1,0 +1,22 @@
+@startuml
+!include ../../skinparam.pu
+
+left to right direction
+
+actor API一般管理者
+actor API品質責任者
+
+API一般管理者 <|-right- API品質責任者
+
+API一般管理者 -- (APIの稼働を確認する)
+API品質責任者 -- (APIの登録を承認する)
+  
+rectangle API管理システム {
+    APIの稼働を確認する -- (ログインする) 
+    APIの稼働を確認する -- (APIモニタリング\nページを閲覧する)
+    
+    APIの登録を承認する -- (API登録画面を閲覧する)
+    APIの登録を承認する -- (API登録を承認する)
+}
+
+@enduml
