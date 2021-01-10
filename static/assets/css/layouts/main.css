@@ -15,7 +15,7 @@ Yellow:  #FFC212
 
 body {
   background-color: #f9fafc;
-  font-family: "Muli";
+  font-family: "ヒラギノ角ゴ", "Muli";
 }
 h1,
 h2,
@@ -34,7 +34,9 @@ p {
 }
 
 a {
-  color: #248aaa;
+  /* CHANGE
+  /* color: #248aaa; */
+  color: #5070cc;
 }
 
 a:hover {

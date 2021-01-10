@@ -82,7 +82,10 @@ body {
 .toc .nav-link.active {
   padding-left: 1rem;
   padding-right: 0.5rem;
-  background-color: #248aaa;
+
+  /* CHANGE */
+  /* background-color: #248aaa; */
+  background-color: #5070cc;
   color: #f9f9f9;
   transition: all ease-out 0.3s;
 }
@@ -146,8 +149,14 @@ h6 {
 }
 
 .post-content blockquote {
-  border-left: 4px solid #248aaa;
-  background-color: #248baa15;
+  /* CHANGE */
+  /* border-left: 4px solid #248aaa; */
+  /* background-color: #248baa15; */
+  
+  border-left:  4px solid #5070cc;
+  /* border-left:  4px solid gray; */
+  /* background-color: #f1f4fa; */
+  background-color: #f5f5f5;
   padding: 0.3rem;
   padding-left: 1rem;
 }
@@ -160,7 +169,8 @@ h6 {
 
 table {
   border-radius: 0.1rem;
-  background: #e5e9f2;
+  /* CHANGE */
+  /* background: #e5e9f2; */
   border: 1px solid #c0ccda;
   padding: 0.1rem;
 }
@@ -177,12 +187,18 @@ td {
 }
 
 table thead tr {
-  background: #248aaa;
-  color: #e5e9f2;
+  /* CHANGE */
+  /* background: #248aaa; */
+  background: #5070cc; /* 4477dd */
+  /* color: #e5e9f2; */
+  color: #ffffff;
 }
 
 tbody tr:nth-child(odd) {
-  background-color: #e5e9f2;
+  /* background-color: #e5e9f2; */
+
+  /* CHANGE */
+  background-color: #f4f4f4;
 }
 
 tbody tr:hover {
@@ -291,7 +307,9 @@ mark {
 .next-prev-navigator .btn-outline-info {
   color: #f9fafc !important;
   border-color: #e5e9f2 !important;
-  background-color: #248aaa !important;
+  /* CHANGE */
+  /* background-color: #248aaa !important; */
+  background-color: #5070cc !important;
   transition: all 0.3s ease-out;
 }
 
