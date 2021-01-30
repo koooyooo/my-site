@@ -4,5 +4,5 @@ menu:
   sidebar:
     name: Program
     identifier: program
-    weight: 100
+    weight: 200
 ---
