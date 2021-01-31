@@ -25,6 +25,9 @@ SRPはクラスの責務を限定することで、保守の範囲を限定化�
 
 こうして単一の責任だけを持ったクラスが協調して全体を構築するべきだという原則が、**単一責任の原則**となります。
 
+#### コードサンプル
+(JVM系の言語のほうが得意ですが、勉強がてらGolangで書いてみました)
+
 ##### Before
 ```golang
 // 複数の責務を負ってしまっている状態
@@ -50,7 +53,7 @@ type Container interface {
 
 // Web特化
 type WebContainer struct {
-    HTMLs []web.HTML
+    HTMLs  []web.HTML
 }
 func (w WebContainer) Serve() error {
 }
@@ -64,7 +67,7 @@ func (d DBContainer) Serve() error {
 
 // Mail特化
 type MailContainer struct {
-    Mails  []mail.Mails
+    Mails  []mail.Mail
 }
 func (m MailContainer) Serve() error {
 }
@@ -78,7 +81,6 @@ func (s Server) Serve() {
       go c()
     }
 }
-
 ```
 
 ### Open Closed Principle (開放閉鎖原則)
