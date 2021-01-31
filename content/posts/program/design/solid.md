@@ -36,9 +36,9 @@ SRPはクラスの責務を限定することで、保守の範囲を限定化�
 ```golang
 // 複数の責務を負ってしまっている状態
 type Server struct {
-    HTMLs   []web.HTML
-    DBConn  db.Conn
-    Mails   []mail.Mail
+    HTMLs   []*web.HTML
+    DBConn  *db.Conn
+    Mails   []*mail.Mail
 }
 func (s Server) ServeWeb() error {
 }
@@ -57,32 +57,32 @@ type Container interface {
 
 // Web特化
 type WebContainer struct {
-    HTMLs  []web.HTML
+    HTMLs  []*web.HTML
 }
 func (w WebContainer) Serve() error {
 }
 
 // DB特化
 type DBContainer struct {
-    DBConn  db.Conn
+    DBConn  *db.Conn
 }
 func (d DBContainer) Serve() error {
 }
 
 // Mail特化
 type MailContainer struct {
-    Mails  []mail.Mail
+    Mails  []*mail.Mail
 }
 func (m MailContainer) Serve() error {
 }
 
 // 組み合わせて提供したい場合はこれも特化して用意
 type Server struct {
-    Containers []Container
+    Containers []*Container
 }
 func (s Server) Serve() {
     for _, c := range s.Containers {
-      go c()
+      go c.Serve()
     }
 }
 ```
@@ -93,7 +93,7 @@ func (s Server) Serve() {
 > 「このマシンは CPUもメモリもディスクも拡張可能にできているのさ。  
 > 　でも箱の外側は変えるなよ？ユーザーや外部デバイスが混乱するから。」
 
-OCPは あるクラスを拡張した際、デグレードの可能性を最小にするための原則です。
+OCPは クラスの拡張性を最大化し、デグレードのリスクを最小化するための原則です。
 
 ### Liskov Substitution Principle (リスコフの置換原則)
 
