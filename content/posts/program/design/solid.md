@@ -1,6 +1,7 @@
 ---
 title: "SOLID原則"
 date: 2021-01-30T23:20:32+09:00
+weight: 100
 draft: false
 ---
 

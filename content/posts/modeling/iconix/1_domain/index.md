@@ -1,6 +1,7 @@
 ---
 title: "ICONIX - 1.Domain分析"
 date: 2020-12-06T01:30:34+09:00
+weight: 200
 draft: false
 ---
 ## ICONIXの分析工程
