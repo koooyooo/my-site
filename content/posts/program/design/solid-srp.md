@@ -1,7 +1,7 @@
 ---
 title: "Solid原則 - SRP"
 date: 2021-02-02T00:49:47+09:00
-draft: true
+draft: false
 ---
 
 > 「これはね、Webも DBも メールも 何でもこなしている便利なサーバーなんだよ。」  
