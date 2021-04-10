@@ -137,6 +137,7 @@ func (s NoopStorage) Store(data []byte) error {
   - AbstractFactoryとして依存関係ごとFactoryで提供
   - 依存性を注入することで、Factoryの存在すら隠蔽
   - 管理インスタンスは不要であれば再生成を控える（事実上のSingleton）
+- FactoryMethodが生成よりも隠蔽を目的としている一方、生成を目的としているパターンが**Builder**パターンです
 
 
 ## まとめ

@@ -32,13 +32,14 @@ push-image: publish
 
 CLOUD_RUN_SERVICE = hugo-server
 
-.PHONY: deploy-image
+.PHONY: deploy
 deploy-image: push-image
 	@ gcloud beta run deploy $(CLOUD_RUN_SERVICE) \
     --image gcr.io/$(GCP_PROJECT_ID)/$(DOCKER_IMAGE_NAME):latest \
     --port 80 \
     --platform=managed \
-    --region=asia-northeast1
+    --region=asia-northeast1 \
+    --max-instances=2
 
 # https://qiita.com/szk3/items/38a3dba7fdfed189f4c9
 
