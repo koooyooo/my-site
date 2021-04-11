@@ -33,7 +33,7 @@ push-image: publish
 CLOUD_RUN_SERVICE = hugo-server
 
 .PHONY: deploy
-deploy-image: push-image
+deploy: push-image
 	@ gcloud beta run deploy $(CLOUD_RUN_SERVICE) \
     --image gcr.io/$(GCP_PROJECT_ID)/$(DOCKER_IMAGE_NAME):latest \
     --port 80 \
