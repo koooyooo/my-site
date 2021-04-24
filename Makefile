@@ -39,7 +39,7 @@ deploy: push-image
     --port 80 \
     --platform=managed \
     --region=asia-northeast1 \
-    --max-instances=2
+    --max-instances=3
 
 # https://qiita.com/szk3/items/38a3dba7fdfed189f4c9
 
