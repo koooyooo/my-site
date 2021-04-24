@@ -29,16 +29,54 @@ OCPの特徴は、スコープ視点では最適化の範囲が**クラスに特
 ### 閉鎖
 閉鎖部分は変数やメソッドの可視性で制御します。これらの可視性を **private** (Javaなら **protected**も可) にすることで外部アクセスを遮断します。こうすれば外部のクラスから変数やメソッドにアクセスされることはありません。
 
+```java
+public class Machine {
+
+    private boolean powered;
+    private CPU cpu;
+    private Memory memory;
+    private HardDisk hardDisk;
+    private Set<USBDevice> usbDevices = new HashSet();
+    private Set<HDMIDevice> hdmiDevices = new HashSet();
+
+    // 振る舞いを省略
+}
+```
+(**Javaによる閉鎖**)
+
 外部から変数へのアクセスが必要な場合は、**Getter / Setter**等の publicなアクセッサメソッドを通じてアクセスを許可します。結局はアクセスさせてしまうのであれば最初から変数を publicにするのと同じだと思われるかも知れませんが、以下の点が異なります。
 
 - Get / Set の片系統のみ許可することができます
+  - Getterのみ用意することで **Immutable**パターンを実現することも可能です
 - アクセス時に処理を挟むことができます (以下に例を示します)
   - Set時の Validation処理で内部状態を保護することができます
   - Get / Set時に参照のコピーを取得・返却することで、参照元でのポインタ更新による影響を無効化できます
 
-Golangにおいても閉鎖部分は変数の可視性で制御します。しかし Golangのstructは Javaのclassと異なり、struct単位での可視性を制御できません (パッケージ単位となります)。ですので 利用側とは別のパッケージを用意し、その中で可視性を **private**（Javaの package private相当）にすることで閉鎖を実現します。Golangの場合は変数名や関数名を小文字始まりにすることで可視性を privateとします。具体的には以下の様な形になります。これでパッケージの外部からはアクセスできません。
+```java
+public class Machine {
+    // (中略)
+    public CPU getCPU() {
+        return cpu;
+    }
 
-この様に、内部の状態や操作を外部から隠蔽することを **カプセル化**と呼びます。
+    public void setCPU(CPU cpu) {
+        this.cpu = cpu;
+    }
+    // (中略)
+    public void addHDMLDevice(HDMIDevice hdmi) {
+        this.hdmiDevices.add(hdmi);
+    }
+
+    public Set<HDMIDevice> getHDMIDeviceSet() {
+        return new HashSet(this.hdmiDevices);
+    }
+}
+```
+(**Javaによる Setter/Getter**)
+
+Golangにおいても閉鎖部分は変数の可視性で制御します。しかし Golangのstructは Javaのclassと異なり、struct単位での可視性を制御できません (パッケージ単位となります)。ですので 利用側とは別のパッケージを用意し、その中で可視性を **private**（Javaの package private相当）にすることで閉鎖を実現します。
+
+Golangの場合は変数名や関数名を小文字始まりにすることで可視性を privateとします。具体的には以下の様な形になります。これでパッケージの外部からはアクセスできません。この様に、内部の状態や操作を外部から隠蔽することを **カプセル化**と呼びます。
 
 ```golang
 // (変数・メソッドを privateにすることで閉鎖を実現)
@@ -54,23 +92,8 @@ type Machine struct {
 	shutDown func(*Machine) error
 }
 
-// マシンの電源スイッチを押下
-// (閉鎖対象を守るためアクセス経路を限定)
-func (m *Machine) PushPowerSwitch(d time.Duration) {
-	if !m.powered {
-		if err := m.startUp(m); err != nil {
-			log.Fatal(err)
-		}
-	} else {
-		if (5 * time.Second) < d {
-			if err := m.shutDown(m); err != nil {
-				log.Fatal(err)
-			}
-		}
-	}
-}
-
 ```
+(**Golangによる閉鎖**)
 
 ### 開放
 
@@ -78,7 +101,21 @@ func (m *Machine) PushPowerSwitch(d time.Duration) {
 
 Javaでは開放する変数やメソッドの可視性を**protected**とすることで、サブクラスからの変数アクセスやメソッドオーバーライドを許可し、これにより拡張に対して開いた状態を作ります。可視性が **private**だと継承が不可能になりますし **public**では外部公開されてしまうので、一般的な拡張ポイントとしては **protected**程度が妥当です。尚、Javaには無印の**package private**も存在しますが、こちらはパッケージ内を含めて公開されてしまうので（Golangのパッケージよりも広いイメージ）クラス境界をはみ出してしまい、少し開放し過ぎです。
 
-可視性を privateにするか、protectedにするかはサブクラスに対する開放度の差となります。すべてを開放するなら protectedを、サブクラスと言えど開放すべきでない部分は privateを選択します。将来の拡張を予測しづらければ全体的に protectedとするのも良いですし、本質的に動かない部分を明示できれるのなら、その部分を privateとします。理想を言えば TemplateMethodパターンの様に、サブクラスが拡張すべき部分を見抜き、そこだけピンポイントで protectedにする設計が美しいですが、そこまで確証を持てないのであれば全体的に protectedとしておくことで最低限 拡張の邪魔をしないことを保証できます。（ここを見誤ると修正に対して閉じられてしまうためさじ加減が重要です）
+```java
+public class Machine {
+	  // (中略)
+    protected void startUp() {
+        // Do Something
+    }
+
+    protected void shutDown() {
+        // Do Something
+    }
+}
+```
+(**Javaでの拡張ポイントの設置**)
+
+> 可視性を privateにするか、protectedにするかはサブクラスに対する開放度の差となります。すべてを開放するなら protectedを、サブクラスと言えど開放すべきでない部分は privateを選択します。将来の拡張を予測しづらければ全体的に protectedとするのも良いですし、本質的に動かない部分を明示できれるのなら、その部分を privateとします。理想を言えば TemplateMethodパターンの様に、サブクラスが拡張すべき部分を見抜き、そこだけピンポイントで protectedにする設計が美しいですが、そこまで確証を持てないのであれば全体的に protectedとしておくことで最低限 拡張の邪魔をしないことを保証できます。（ここを見誤ると修正に対して閉じられてしまうためさじ加減が重要です）
 
 Golangでは同一パッケージ内であれば struct内の変数にアクセスできますので、変数の可視性は privateのままで事足ります。一方でJavaと異なり継承によるメソッドのオーバーライドができないので、修正を想定する振る舞いはメソッドではなく struct内の関数として定義しておく必要があります。この関数の実装を入れ替えることで、継承によるオーバーライドと同等の拡張性を担保する訳です。要するに「継承がだめなら委譲を使え」「Goの関数は第一級関数なので、Interfaceと同様に委譲ができる」という感じです。
 
@@ -86,11 +123,37 @@ Golangでは同一パッケージ内であれば struct内の変数にアクセ�
 ```golang
 type Machine struct {
 	// (中略)
-
 	startUp  func(*Machine) error
 	shutDown func(*Machine) error
 }
 ```
 &nbsp;  
-これらの関数を入れ替えることで、継承に頼らないでも修正が可能になります。つまり、修正に対して開かれた状態を担保できるわけです。
+これらの関数を入れ替えることで、継承に頼らないでも修正を可能にしておきます。つまりここを拡張ポイントとして設計しておくイメージです。ここが、修正に対して開かれた状態となります。
 
+例えば、以下のメソッドはスイッチ押下のイベントを表現しています。このメソッドでは電源OFFの際にスイッチが押下されたら起動、電源ONの際に5秒以上押下されていたら終了というフローは定義していますが、実際の起動・終了処理の詳細にまでは踏み込んでおらず、拡張ポイントの関数に処理を委譲しています。これは起動・終了の部分は拡張可能に設計されているからです。
+```golang
+// マシンの電源スイッチを押下
+func (m *Machine) PushPowerSwitch(d time.Duration) {
+	if !m.powered {
+		// 起動処理に委譲
+		if err := m.startUp(m); err != nil {
+			log.Fatal(err)
+		}
+	} else {
+		if (5 * time.Second) < d {
+			// 終了処理に委譲
+			if err := m.shutDown(m); err != nil {
+				log.Fatal(err)
+			}
+		}
+	}
+}
+```
+(**Golangによる拡張部分の活用**)
+
+実際の設計ではこの様に「緩めるところ（拡張ポイント)」と「固めるところ（固定ポイント）」を見極めながら薦めてゆきます。例えば、デザインパターンの **Template Method**では、処理のコントロール部分を固めて、個々の処理単体を緩めることで拡張ポイントを最適化しています。
+
+## まとめ
+今回は Open Closed Principle（開放閉鎖原則）を学びました。OCPはカプセル化を用いた閉鎖により境界線を確立し 継承や委譲を用いた開放により境界内の拡張性を確立する手法でした。これを上手く使いこなすと、クラス間の疎結合を拡張性を犠牲にせずに実現できます。美しいクラス設計においては必須の原則ですので、使いこなせるようになってしまいましょう。
+
+では、OCPのある良いプログラミングライフを！
