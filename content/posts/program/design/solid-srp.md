@@ -4,6 +4,9 @@ date: 2021-02-02T00:49:47+09:00
 weight: 200
 draft: false
 ---
+
+## Single Responsibility Principle (単一責任の原則)
+&nbsp;  
 **"クラス変更する理由は1つ以上存在してはならない"**
 
 > 「これはね、Webも DBも メールも 何でもこなしている便利なサーバーなんだよ。」  
